@@ -1,5 +1,7 @@
 package com.sexytreetrunks.manggaegame.Model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -14,7 +16,7 @@ public class Board {
     private int size_level;
     private int variety;
 
-    private int mangGaeMatrix[][];
+    private int mangGaeMatrix[][];//각 private데이터에 대해서 get함수 필요한듯
 
 
     private static final HashMap<Integer, double[]> PERCENTAGE_DATA= new HashMap<>();
@@ -24,12 +26,19 @@ public class Board {
         PERCENTAGE_DATA.put(4, new double[]{0.2,0.45,0.7,1});
     } // 넘 지저분함
 
-    Board() {
-        reset();
+    public Board() {
+        resetVariables();
     }
 
-    public boolean isDominantMangGae(int chosenIndex1, int chosenIndex2) {
-        int mangGaeValue = mangGaeMatrix[chosenIndex1][chosenIndex2];
+    public void resetVariables() {
+        level = 1;
+        size = 4;
+        size_level = 1;
+        variety = 2;
+    }
+
+    public boolean isDominantMangGae(int row, int col) {
+        int mangGaeValue = mangGaeMatrix[row][col];
         if (mangGaeValue == variety)
             return true;
         return false;
@@ -59,17 +68,10 @@ public class Board {
         return false;
     }
 
-    public void reset() {
-        level = 1;
-        size = 4;
-        size_level = 1;
-        variety = 2;
-        allocateMangGae();
-    }
-
-    public void allocateMangGae() {
+    public int[][] allocateMangGae() {
         initMatrixValue();
         shuffleMatrix();
+        return mangGaeMatrix;
     }
 
     private void initMatrixValue() { //문제점 : 코드가 안이쁨 로직이 한눈에 안들어옴.
@@ -103,5 +105,25 @@ public class Board {
                 mangGaeMatrix[m][n] = temp;
             }
         }
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public int getSize_level() {
+        return size_level;
+    }
+
+    public int getVariety() {
+        return variety;
+    }
+
+    public int[][] getMangGaeMatrix() {
+        return mangGaeMatrix;
     }
 }
