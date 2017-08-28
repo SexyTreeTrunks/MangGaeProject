@@ -15,6 +15,8 @@ public class Board {
     private int size;
     private int size_level;
     private int variety;
+    private GameState state;
+    private enum GameState { IN_PROGRESS, FINISHED }
 
     private int mangGaeMatrix[][];//각 private데이터에 대해서 get함수 필요한듯
 
@@ -33,8 +35,9 @@ public class Board {
     public void resetVariables() {
         level = 1;
         size = 4;
-        size_level = 1;
+        size_level = 4;
         variety = 2;
+        state = GameState.IN_PROGRESS;
     }
 
     public boolean isDominantMangGae(int row, int col) {
@@ -46,14 +49,18 @@ public class Board {
 
     public void levelUp() {
         level++;
+        if (level == 256) {
+            state = GameState.FINISHED;
+            return;
+        }
         if (level >= 16) {
-            if (isRoot(16,level)) {
+            if (level == size_level*4) {
                 size++;
-                size_level *= 16;
+                size_level *= 4;
                 variety = 2;
                 return;
             }
-            if (((level - size_level) % size_level) == 0)
+            if (level % size_level == 0)
                 variety++;
         }
     }
