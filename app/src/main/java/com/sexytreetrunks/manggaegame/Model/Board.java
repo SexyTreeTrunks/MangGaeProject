@@ -16,7 +16,7 @@ public class Board {
     private int size_level;
     private int variety;
     private GameState state;
-    private enum GameState { IN_PROGRESS, FINISHED }
+    public enum GameState { IN_PROGRESS, FINISHED }
 
     private int mangGaeMatrix[][];//각 private데이터에 대해서 get함수 필요한듯
 
@@ -29,15 +29,16 @@ public class Board {
     } // 넘 지저분함
 
     public Board() {
-        resetVariables();
+        reset();
     }
 
-    public void resetVariables() {
+    public void reset() {
         level = 1;
         size = 4;
         size_level = 4;
         variety = 2;
         state = GameState.IN_PROGRESS;
+        allocateMangGae();
     }
 
     public boolean isDominantMangGae(int row, int col) {
@@ -101,7 +102,7 @@ public class Board {
 
     private void shuffleMatrix() {
         Random random = new Random();
-
+        random.setSeed(System.currentTimeMillis());
         for (int i = mangGaeMatrix.length - 1; i > 0; i--) {
             for (int j = mangGaeMatrix[i].length - 1; j > 0; j--) {
                 int m = random.nextInt(i + 1);
@@ -132,5 +133,13 @@ public class Board {
 
     public int[][] getMangGaeMatrix() {
         return mangGaeMatrix;
+    }
+
+    public int getValueFromMatrix(int row, int col) {
+        return mangGaeMatrix[row][col];
+    }
+
+    public GameState getState() {
+        return state;
     }
 }
