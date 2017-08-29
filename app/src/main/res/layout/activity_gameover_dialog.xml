@@ -1,20 +1,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/rl_quit_learning"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="150dp"
-        android:paddingBottom="@dimen/thirty_dp"
-        android:paddingLeft="@dimen/ten_dp"
-        android:background="@drawable/btn_white"
-        android:paddingRight="@dimen/ten_dp"
-        android:paddingTop="@dimen/ten_dp"
+        android:background="@drawable/dialog_design"
+        android:paddingBottom="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:id="@+id/tv_quit_learning"
@@ -22,9 +20,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/ten_dp"
+            android:layout_margin="10dp"
             android:text="GAMEOVER"
-            android:textSize="@dimen/twenty_sp"
+
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -33,31 +32,43 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_quit_learning"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/ten_dp"
-            android:layout_marginRight="@dimen/ten_dp"
-            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="게임에 지셨어여ㅠㅠ \n 다시 겜하실래여?"
-            android:textSize="@dimen/sixteen_sp" />
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="113dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:background="@android:color/transparent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        >
+        android:layout_alignParentStart="true">
 
         <Button
             android:id="@+id/btn_yes"
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:background="@mipmap/ic_launcher" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/yes_btn_design"
+            android:text="✓"
+            android:textColor="@android:color/white"
+            android:textSize="36sp" />
+
+        <Button
+            android:id="@+id/btn_no"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:text="✗"
+            android:layout_margin="15dp"
+            android:background="@drawable/no_btn_design"
+            android:textColor="@android:color/white"
+            android:textSize="36sp" />
 
     </LinearLayout>
 </RelativeLayout>
