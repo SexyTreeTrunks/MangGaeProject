@@ -1,12 +1,13 @@
 package com.sexytreetrunks.manggaegame.Control;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import com.sexytreetrunks.manggaegame.R;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
