@@ -23,6 +23,7 @@ public class GameoverDialog extends Dialog implements View.OnClickListener{
         activity = (MangGaeActivity) context;
         setContentView(R.layout.activity_gameover_dialog);
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        setCancelable(false);
         button_yes = findViewById(R.id.btn_yes);
         button_no = findViewById(R.id.btn_no);
         button_yes.setOnClickListener(this);
