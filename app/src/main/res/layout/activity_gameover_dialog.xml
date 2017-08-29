@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:id="@+id/rl_quit_learning"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:paddingBottom="@dimen/thirty_dp"
+        android:paddingLeft="@dimen/ten_dp"
+        android:background="@drawable/btn_white"
+        android:paddingRight="@dimen/ten_dp"
+        android:paddingTop="@dimen/ten_dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/tv_quit_learning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/ten_dp"
+            android:text="GAMEOVER"
+            android:textSize="@dimen/twenty_sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_quit_learning"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/ten_dp"
+            android:layout_marginRight="@dimen/ten_dp"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:gravity="center"
+            android:text="게임에 지셨어여ㅠㅠ \n 다시 겜하실래여?"
+            android:textSize="@dimen/sixteen_sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        >
+
+        <Button
+            android:id="@+id/btn_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:background="@mipmap/ic_launcher" />
+
+    </LinearLayout>
+</RelativeLayout>

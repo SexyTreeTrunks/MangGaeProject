@@ -14,6 +14,12 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+
     public void onStartClicked(View v) {
         Intent intent = new Intent(this, MangGaeActivity.class);
         startActivity(intent);
