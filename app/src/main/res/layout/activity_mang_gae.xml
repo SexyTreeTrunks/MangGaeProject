@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Level"
+        android:text="Level 1"
         android:textAlignment="center"
         android:textSize="30sp"
         tools:layout_editor_absoluteX="0dp"
@@ -20,6 +20,8 @@
         android:id="@+id/gridView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:verticalSpacing="0dp"
+        android:horizontalSpacing="0dp"
         tools:layout_editor_absoluteY="53dp"
         tools:layout_editor_absoluteX="0dp" />
 

@@ -65,7 +65,7 @@ public class ImageAdapter extends BaseAdapter {
         int row = i / board.getSize();
         int col = i % board.getSize();
 
-        imageView.setImageResource(img[board.getValueFromMatrix(row,col)]-1);
+        imageView.setImageResource(img[board.getValueFromMatrix(row,col)]);
 
         return imageView;
     }

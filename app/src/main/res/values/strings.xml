@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MangGaeGame</string>
+    <Integer name="img_length">26</Integer>
 </resources>

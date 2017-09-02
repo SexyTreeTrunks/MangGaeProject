@@ -3,6 +3,8 @@ package com.sexytreetrunks.manggaegame.Model;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -18,14 +20,15 @@ public class Board {
     private GameState state;
     public enum GameState { IN_PROGRESS, FINISHED }
 
-    private int mangGaeMatrix[][];//각 private데이터에 대해서 get함수 필요한듯
+    private int mangGaeMatrix[][];
 
-
+    static int IMG_LENGTH;
     private static final HashMap<Integer, double[]> PERCENTAGE_DATA= new HashMap<>();
     static {
         PERCENTAGE_DATA.put(2, new double[]{0.45,1});
         PERCENTAGE_DATA.put(3, new double[]{0.3,0.6,1});
         PERCENTAGE_DATA.put(4, new double[]{0.2,0.45,0.7,1});
+        IMG_LENGTH = 26;
     } // 넘 지저분함
 
     public Board() {
@@ -43,7 +46,25 @@ public class Board {
 
     public boolean isDominantMangGae(int row, int col) {
         int mangGaeValue = mangGaeMatrix[row][col];
-        if (mangGaeValue == variety)
+        int key = 0;
+        HashMap<Integer,Integer> hm = new HashMap();
+        for (int i = 0; i < mangGaeMatrix.length; i++) {
+            for (int j=0; j < mangGaeMatrix[i].length; j++) {
+                key = mangGaeMatrix[i][j];
+                if (hm.containsKey(key))
+                    hm.put(key, hm.get(key)+1);
+                else
+                    hm.put(key, 1);
+            }
+        }
+        int max = 0;
+        for (int i:hm.keySet()) {
+            if (max < hm.get(i)) {
+                key = i;
+                max = hm.get(i);
+            }
+        }
+        if (mangGaeValue == key)
             return true;
         return false;
     }
@@ -85,17 +106,22 @@ public class Board {
     private void initMatrixValue() { //문제점 : 코드가 안이쁨 로직이 한눈에 안들어옴.
         double[] percentage_data = PERCENTAGE_DATA.get(variety);
 
+        Random random = new Random();
+        random.setSeed(System.currentTimeMillis());
+
         int rear = 0;
+        int value = random.nextInt(IMG_LENGTH);
         int arraysize = size * size;
 
         mangGaeMatrix = new int[size][size];
-        //가장 많은 셀을 차지하는 값이 가장 큰수가 되도록함.
         for(int i = 0; i < mangGaeMatrix.length; i++) {
             for (int j = 0; j < mangGaeMatrix[i].length; j++) {
-                mangGaeMatrix[i][j] = rear + 1; // 1~variety값만 가짐
+                mangGaeMatrix[i][j] = value;
                 int arrayIndex = i * size + j;
-                if (arrayIndex == (int) (percentage_data[rear] * arraysize - 1))
+                if (arrayIndex == (int) (percentage_data[rear] * arraysize - 1)) {
                     rear++;
+                    value = random.nextInt(IMG_LENGTH);
+                }
             }
         }
     }
@@ -129,10 +155,6 @@ public class Board {
 
     public int getVariety() {
         return variety;
-    }
-
-    public int[][] getMangGaeMatrix() {
-        return mangGaeMatrix;
     }
 
     public int getValueFromMatrix(int row, int col) {
